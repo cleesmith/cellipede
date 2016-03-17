@@ -12,8 +12,6 @@ called Handsontable.
 * It does not rely on Google's Spreadsheets API, so it's must faster and way more reliable.
   * Of course, you can copy/paste into google spreadsheets if you need to collaborate/share.
   * Even better, use cellipede as a service to grab the data you want while in a google spreadsheet.
-* If you are learning to program, this is a great example of software to learn from as
-it follows well known **best practices** for Python and Flask apps.
 * Includes a job scheduler to run tasks periodically for trending counts and anything over time.
   * It may also be used for custom jobs, such as the included non-seo example RSS feed parser.
   * It reads **ruby on rails** job postings from oDesk's RSS feed and fills in a sheet every day.
@@ -25,6 +23,8 @@ free database,
 but that's a lot of sheets ... and each sheet has no row/column limit.
 * It runs great on a Mac, Ubuntu, or Debian, and probably others too.
 * It runs great on a Raspberry Pi.
+* If you are learning to program, this is a great example of software to learn from as
+it follows well known **best practices** for Python and Flask apps.
 * There is a lot of potential for learning and growth with cellipede.
 
 ***
