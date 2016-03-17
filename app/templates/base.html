@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Cellipede</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="cellipede is open source software for learning python, flask, and more.">
+  <meta name="keywords" content="python,flask,social media counts,scraper,lxml,xpath">
+  <meta name="author" content="Chris Smith">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="static/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+  <script src="static/jquery-1.11.1.min.js" type="text/javascript" language="javascript"></script>
+
+  <script src="static/lib/handsontable/handsontable.full.js"></script>
+
+  <!-- handonstable-RuleJS: -->
+  <link href="static/lib/handsontable/handsontable.full.css" rel="stylesheet" media="screen">
+  <link href="static/lib/handsontable/handsontable.formula.css" rel="stylesheet" media="screen">
+  <script src="static/lib/RuleJS/lib/lodash/lodash.js"></script>
+  <script src="static/lib/RuleJS/lib/underscore.string/underscore.string.js"></script>
+  <script src="static/lib/RuleJS/lib/moment/moment.js"></script>
+  <script src="static/lib/RuleJS/lib/numeral/numeral.js"></script>
+  <script src="static/lib/RuleJS/lib/numericjs/numeric.js"></script>
+  <script src="static/lib/RuleJS/lib/js-md5/md5.js"></script>
+  <script src="static/lib/RuleJS/lib/jstat/jstat.js"></script>
+  <script src="static/lib/RuleJS/lib/formulajs/formula.js"></script>
+  <script src="static/lib/RuleJS/js/parser.js"></script>
+  <script src="static/lib/RuleJS/js/ruleJS.js"></script>
+  <script src="static/lib/handsontable/handsontable.formula.js"></script>
+  <!-- <script src="static/lib/samples.js"></script> -->
+  <script src="static/lib/highlight/highlight.pack.js"></script>
+
+  <!-- reset Bootstrap: -->
+  <link href="static/css/handsontable.bootstrap.css" rel="stylesheet" media="screen">
+
+  <script src="static/bootstrap.min.js" type="text/javascript" language="javascript"></script>
+  <script src="static/bootstrap-confirmation.js" type="text/javascript" language="javascript"></script>
+  <script src="static/jquery.dataTables.min.js" type="text/javascript" language="javascript"></script>
+  <script src="static/dataTables.tableTools.js" type="text/javascript" language="javascript"></script>
+
+  <link href="static/bootstrap.min.css" rel="stylesheet" media="screen">
+  <link href="static/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+  <link href="static/dataTables.tableTools.css" rel="stylesheet" type="text/css">
+  <link href="static/lib/highlight/styles/github.css" rel="stylesheet" media="screen">
+  <link href="static/css/font-awesome/css/font-awesome.min.css" rel="stylesheet" media="screen">
+</head>
+<body style="padding-bottom:75px;">
+<nav class="navbar navbar-inverse navbar-fixed-top col-sm-12" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <!-- <img class="pull-left" src="static/images/cellipede.png" alt="Cellipede" style="margin-right:10px"> -->
+      <a class="navbar-brand" href="/">Cellipede</a>
+    </div>
+    <div class="row">
+      <div class="collapse navbar-collapse" id="main-navbar">
+        <ul class="nav navbar-nav">
+          <!-- <li><a href="/" style="font-size:20px;">Cellipede</a></li> -->
+          <li><a href="javascript:void(0)" style="margin-left:30px;">&nbsp;</a></li>
+          <li><a href="/sheets">Sheets</a></li>
+          <li><a href="/sheet">New sheet</a></li>
+          <li><a href="javascript:void(0)" style="margin-left:30px;">&nbsp;</a></li>
+          <li><a href="http://cleesmith.github.io/" target="_blank">Blog</a></li>
+      </div>
+    </div>
+  </div>
+</nav>
+<div class="clearfix"></div>
+<div class="container-fluid" style="margin-top:60px;">
+  {% if get_flashed_messages() %}
+    <div class="alert alert-success alert-dismissable">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      {% for message in get_flashed_messages() %}
+        {{ message }}
+      {% endfor %}
+    </div>
+  {% endif %}
+  <div class="clearfix"></div>
+  {% if error %}
+    <div class="alert alert-danger alert-dismissable">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <p class="error"><strong>Errors:</strong><br />{{ error | safe }}</p>
+    </div>
+  {% endif %}
+  {% if form %}
+    {% if form.errors %}
+      <div class="alert alert-danger alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <p class="error"><strong>Errors:</strong></p>
+        <ul class="errors">
+          {% for field_name, field_errors in form.errors|dictsort if field_errors %}
+            {% for error in field_errors %}
+              <li>{{ form[field_name].label }}: {{ error }}</li>
+            {% endfor %}
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+  {% endif %}
+  {% block content %}{% endblock %}
+</div>
+</body>
+</html>

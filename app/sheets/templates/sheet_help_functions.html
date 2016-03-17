@@ -1,0 +1,67 @@
+<div class="modal fade" id="functions-help" tabindex="-1" role="dialog" aria-labelledby="functionsHelp" aria-hidden="true">
+  <div class="modal-dialog" style="width:900px">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button class="close" data-dismiss="modal">x</button>
+          <h3>Functions help</h3>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-info">
+          <h3>Scrapers &nbsp;&nbsp;<small><em>to scrape data from a page at a url</em></small></h3>
+          <h4>Generic <small><em>scrape from any page at url</em></small></h4>
+          <ul>
+            <li>
+              <a href="javascript:void(0)" style="text-decoration:none; margin-left:15px;">?serps(A1)</a> :
+              <em style="color:gray;">serps from google's search result page ... not via the deprecated api</em>
+            </li>
+            <li><a href="javascript:void(0)" style="text-decoration:none; margin-left:15px;">?links(A1)</a> : <em style="color:gray;">scrape all links, <b>a href's</b>, from a page</em></li>
+            <li><a href="javascript:void(0)" style="text-decoration:none; margin-left:15px;">?title(A1)</a> : <em style="color:gray;">scrape title from the page</em></li>
+            <li><a href="javascript:void(0)" style="text-decoration:none; margin-left:15px;">?description(A1)</a> : <em style="color:gray;">scrape description from the page</em></li>
+            <li><a href="javascript:void(0)" style="text-decoration:none; margin-left:15px;">?ga(a1)</a> : <em style="color:gray;">scrape google analytics info from the page, which returns the "UA-?-?"</em></li>
+          </ul>
+          <br />
+          <h4>YouTube <small><em>e.g. https://www.youtube.com/watch?v=<b>paX3Q6ZBuyg</b> so enter <b>paX3Q6ZBuyg</b> into a cell</em></small></h4>
+          <ul>
+            <li><a href="javascript:void(0)" style="text-decoration:none; margin-left:15px;">?title(a1)</a> : <em style="color:gray;">scrape the video title for a given video id</em></li>
+            <li><a href="javascript:void(0)" style="text-decoration:none; margin-left:15px;">?views(a1)</a> : <em style="color:gray;">scrape the views count for a given video id</em></li>
+            <li><a href="javascript:void(0)" style="text-decoration:none; margin-left:15px;">?thumbsup(a1)</a> : <em style="color:gray;">scrape the thumbsup count for a given video id</em></li>
+            <li><a href="javascript:void(0)" style="text-decoration:none; margin-left:15px;">?thumbsdown(a1)</a> : <em style="color:gray;">scrape the thumbsdown count for a given video id</em></li>
+          </ul>
+          <br />
+          <h4>Twitter <small><em>first, enter a twitter user name into a cell</em></small></h4>
+          <ul>
+            <li><span><a href="javascript:void(0)" style="text-decoration:none; margin-left:15px;">?tweettotal(a1)</a> : <em style="color:gray;">scrape the twitter account tweets count for a given user</em></span></li>
+            <li><span><a href="javascript:void(0)" style="text-decoration:none; margin-left:15px;">?following(a1)</a> : <em style="color:gray;">scrape the twitter account following count for a given user</em></span></li>
+            <li><span><a href="javascript:void(0)" style="text-decoration:none; margin-left:15px;">?followers(a1)</a> : <em style="color:gray;">scrape the twitter account followers count for a given user</em></span></li>
+          </ul>
+        </div>
+
+        <div class="alert alert-success">
+          <h3>API's &nbsp;&nbsp;<small><em>to retrieve data, mostly counts, via an API call</em></small></h3>
+          <h4>Twitter</h4>
+          <ul>
+            <li><a href="javascript:void(0)" style="text-decoration:none; margin-left:15px;">?tweets(A1)</a> : <em style="color:gray;">get count using twitter api for a given url</em></li>
+          </ul>
+          <br />
+          <h4>Facebook</h4>
+          <ul>
+            <li><a href="javascript:void(0)" style="text-decoration:none; margin-left:15px;">?shares(A1)</a> : <em style="color:gray;">get count using facebook api for a given url</em></li>
+            <li><a href="javascript:void(0)" style="text-decoration:none; margin-left:15px;">?likes(A1)</a> : <em style="color:gray;">get count using facebook api for a given url</em></li>
+          </ul>
+          <br />
+          <h4>Google +1's and YouTube</h4>
+          <ul>
+            <li><a href="javascript:void(0)" style="text-decoration:none; margin-left:15px;">?plusses(A1)</a> : <em style="color:gray;">get count using google api for a given url</em></li>
+            <li><a href="javascript:void(0)" style="text-decoration:none; margin-left:15px;">?subscribers(A1)</a> : <em style="color:gray;">get YouTube subscriber count using google api for a given user name</em></li>
+            <li><a href="javascript:void(0)" style="text-decoration:none; margin-left:15px;">?totalviews(A1)</a> : <em style="color:gray;">get YouTube total views count using google api for a given user name</em></li>
+          </ul>
+        </div>
+
+        <div class="alert alert-danger">
+          * right-click on a any of the above then select copy and then paste it into a sheet cell
+        </div>
+
+      </div><!-- modal-body -->
+    </div><!-- modal-content -->
+  </div><!-- modal-dialog -->
+</div><!-- modal -->

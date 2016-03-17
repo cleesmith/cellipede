@@ -1,0 +1,269 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div id="sheet_alert" class="alert alert-info alert-dismissable" style="display:none;">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <p id="sheet_notice"><br /></p>
+  <div class="clearfix"></div>
+</div>
+
+<div class="form-group col-sm-8" style="margin-left:-16px;">
+  <label class="col-sm-1 control-label" data-placement="left">
+    <button name="save" id="saveButton" class="btn btn-primary">Save</button>
+  </label>
+  <div class="col-sm-5">
+    <input class="form-control" id="sheet_name" name="name" placeholder="a name is required" type="text" value="{{sheet_name}}">
+  </div>
+  <div class="col-sm-3 pull-left">
+    {{form.run_at(default=form.run_at, class_="form-control")}}
+  </div>
+
+  <div class="col-sm-5 pull-left" style="margin-top:5px">
+    <!-- {{form.gspread_link(default=form.gspread_link, class_="form-control", placeholder="echo/mirror to this google spreadsheet ... Coming soon!")}} -->
+    <div class="btn-group btn-group-xs" role="group" style="margin-top:10px;">
+      <a href="#sheet-help" class="btn btn-success btn-xs" data-toggle="modal" data-target="#sheet-help" style="margin-bottom:5px; text-decoration:none; border-color:black" title="Help">
+        <span class="glyphicon glyphicon-question-sign"></span>
+        help
+      </a>
+      <a href="#functions-help" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#functions-help" style="margin-bottom:5px; text-decoration:none; border-color:black" title="Functions help">
+        <span class="glyphicon glyphicon-globe"></span>
+        functions
+      </a>
+      <a href="#scraper-api-help" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#formulas-help" style="margin-bottom:5px; text-decoration:none; border-color:black" title="Formulas help">
+        <span class="glyphicon glyphicon-plus"></span>
+        formulas
+      </a>
+    </div>
+  </div>
+
+  <div class="col-sm-5 pull-left" style="margin-top:5px">
+    <small>updated: {{sheet_updated_at | datetimeformat}}</small>
+  </div>
+</div>
+<div class="clearfix"></div>
+
+<div class="container-fluid" style="margin-top:5px;">
+  <div id="asheet_container" class="handsontable"></div>
+
+  <p class="small" style="margin-top:10px; color:gray;">* right-click on a cell in the sheet above to manage rows/cols</p>
+
+  <!-- ************** data for sheet *********************************** -->
+  <div id="jsondata" data-jsondata="{{asheet}}"></div>
+  <!-- ************** data for sheet *********************************** -->
+
+  <script type="text/javascript" charset="utf-8">
+    $(document).ready(function() {
+      // var data1 = [
+      //   ["http://localhost/", 10, '?title(a1)']
+      // ];
+      var sheetAlert = $('#sheet_alert');
+      var currentClass = 'alert-info';
+      var sheetNotice = $('#sheet_notice');
+      var saveButton = document.getElementById('saveButton');
+      var container = document.getElementById('asheet_container');
+      var sheet_run_at = "{{sheet_run_at}}";
+      var autorun = sheet_run_at == 'never' ? false : true;
+
+      // add some color to the 1st row headers if sheet is autorun trends/rss:
+      function firstRowRenderer(instance, td, row, col, prop, value, cellProperties) {
+        if (!autorun) return;
+        Handsontable.renderers.TextRenderer.apply(this, arguments);
+        td.style.fontWeight = 'bold';
+        td.style.color = 'sienna';
+        td.style.background = 'white';
+      }
+
+      var hot = new Handsontable(container, {
+        // readOnly: true,
+        'afterChangePlugin': true,
+        // data: data1,
+        rowHeaders: true,
+        minSpareRows: 1,
+        colHeaders: true,
+        // colWidths: [150],
+        minSpareCols: 1,
+        contextMenu: true,
+        manualColumnResize: true,
+        // stretchH: 'all',
+        formulas: true,
+        columnSorting: true, // supposedly allows you to sort by a column, but not working?
+        // columnSorting: {
+        //   column: 0,
+        //   sortOrder: false // sort descending
+        // },
+        // add some color to the 1st row headers if sheet is autorun trends/rss:
+        cells: function (row, col, prop) {
+          var cellProperties = {};
+          if (!autorun) return;
+          if (row === 0 || this.instance.getData()[row][col] === 'readOnly') {
+            // make cell read-only if it is first row or the text is 'readOnly':
+            cellProperties.readOnly = true;
+          }
+          if (row === 0) {
+            cellProperties.renderer = firstRowRenderer;
+          }
+          return cellProperties;
+        }
+      });
+
+      // load data into sheet from the database column sheet.asheet:
+      // the next 3 lines mostly work, but have issues with double/single quotes
+      //  var sheet_data = '{{asheet | safe}}';
+      //  var data = JSON.parse(sheet_data);
+      //  hot.loadData(data.data);
+      // solution: the simplest/correct way to use json in templates is to put
+      //           it in the dom as a dataset with the default safe html encoding
+      // see: <div id="jsondata" data-jsondata="{{asheet}}"></div> above
+      var data = $('#jsondata').data();
+      hot.loadData(data.jsondata.data);
+
+      Handsontable.Dom.addEvent(saveButton, 'click', function() {
+        runAt = $("#run_at").val();
+        sheetName = $('#sheet_name').val().trim();
+        if (sheetName == '') {
+          $('#sheet_name').val(sheetName); // replace with trimmed value
+          sheetAlert.removeClass(currentClass);
+          currentClass = 'alert-danger';
+          sheetAlert.addClass(currentClass);
+          sheetNotice.text('Error: a sheet name is required!');
+          $('#sheet_alert').show();
+          return;
+        }
+        var ajax_url = '/sheet_save';
+        $.ajax({
+          url: ajax_url,
+          data: {id: {{sheet_id}}, name: sheetName, run_at: runAt, asheet: JSON.stringify(hot.getData())},
+          dataType: 'json',
+          type: 'POST',
+          success: function (res) {
+            if (res.result === 'ok') {
+              sheetAlert.removeClass(currentClass);
+              currentClass = 'alert-success';
+              sheetAlert.addClass(currentClass);
+              sheetNotice.text('Sheet saved successfully');
+              $('#sheet_alert').show();
+            }
+            else {
+              sheetAlert.removeClass(currentClass);
+              currentClass = 'alert-danger';
+              sheetAlert.addClass(currentClass);
+              sheetNotice.text('Unable to save sheet: ' + res.result);
+              $('#sheet_alert').show();
+            }
+          },
+          error: function (textStatus, errorThrown) {
+            sheetAlert.removeClass(currentClass);
+            currentClass = 'alert-danger';
+            sheetAlert.addClass(currentClass);
+            sheetNotice.text( 'Unable to save sheet to the url "' + ajax_url +
+                              '" because the response status is ' + textStatus.status +
+                              ' ' + textStatus.statusText + '!'
+            );
+            $('#sheet_alert').show();
+          }
+        });
+      });
+
+      function chrToNum(chr) {
+        chr = chr.toUpperCase();
+        chr = chr.replace(/\$/g, '');
+        var base = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', i, j, result = 0;
+        for (i = 0, j = chr.length - 1; i < chr.length; i += 1, j -= 1) {
+          result += Math.pow(base.length, j) * (base.indexOf(chr[i]) + 1);
+        }
+        if (result) {
+          --result;
+        }
+        return result;
+      };
+
+      function getcellCoords(cell_letter_num) {
+        var num = cell_letter_num.match(/\d+$/),
+            alpha = cell_letter_num.replace(num, '');
+        return {
+          row: parseInt(num[0], 10) - 1,
+          col: chrToNum(alpha)
+        };
+      };
+
+      Handsontable.hooks.add('afterChange', function(changes, source) {
+        that = this;
+        if (this.getSettings().afterChangePlugin) {
+          var original_cell_value = this.getValue();
+          var value = original_cell_value;
+          if (value == "?" || value == "") {
+            return;
+          }
+          if (value && value[0] === '?') {
+            isValid = false;
+            selected = this.getSelected();
+            cleanValue = value.replace(/[\?,),(]/g, ' ').trim();
+            tokens = cleanValue.split(/[\s,]+/) // tokenize on spaces or commas
+            var pattern_alphanum = /^[A-Za-z][0-9]*$/;
+            if (tokens[1].length >= 2 && pattern_alphanum.test(tokens[1])) {
+              var acell = tokens[1]
+              var parsed_cell = getcellCoords(acell)
+              cell_entry = this.getDataAtCell(parsed_cell.row,parsed_cell.col);
+              tokens[1] = cell_entry
+              sheetAlert.removeClass(currentClass);
+              currentClass = 'alert-warning';
+              sheetAlert.addClass(currentClass);
+              sheetNotice.text('Standby processing request...');
+              $('#sheet_alert').show();
+              isValid = true;
+            } else {
+              this.setDataAtCell(selected[0], selected[1], "INVALID: " + value);
+            }
+            var serverside_url = '/sheet_serverside';
+            if (isValid == true) {
+              $.ajax({
+                url: serverside_url,
+                data: {id: {{sheet_id}}, afunction: tokens[0], url: tokens[1]},
+                dataType: 'json',
+                type: 'POST',
+                success: function (res) {
+                  if (res.result === 'ok') {
+                    that.setDataAtCell(selected[0], selected[1], res.raw_data);
+                    sheetAlert.removeClass(currentClass);
+                    currentClass = 'alert-success';
+                    sheetAlert.addClass(currentClass);
+                    sheetNotice.text('Done ... see result in sheet');
+                    $('#sheet_alert').show();
+                  }
+                  else {
+                    // restore the original cell value:
+                    that.setDataAtCell(selected[0], selected[1], original_cell_value);
+                    sheetAlert.removeClass(currentClass);
+                    currentClass = 'alert-danger';
+                    sheetAlert.addClass(currentClass);
+                    sheetNotice.text('Result was not ok: ' + res.result);
+                    $('#sheet_alert').show();
+                  }
+                },
+                error: function (textStatus, errorThrown) {
+                  sheetAlert.removeClass(currentClass);
+                  currentClass = 'alert-danger';
+                  sheetAlert.addClass(currentClass);
+                  sheetNotice.text( 'Failed request to the url "' + serverside_url +
+                                    '" because the response status is ' + textStatus.status +
+                                    ' ' + textStatus.statusText + '!'
+                  );
+                  $('#sheet_alert').show();
+                  // restore the original cell value:
+                  that.setDataAtCell(selected[0], selected[1], original_cell_value);
+                }
+              });
+            } // isValid
+          } // if (value && value[0] === '?')
+        } // if (this.getSettings().afterChangePlugin)
+      });
+
+    });
+  </script>
+</div>
+
+{% include 'sheet_help.html' %}
+{% include 'sheet_help_functions.html' %}
+{% include 'sheet_help_formulas.html' %}
+
+{% endblock %}

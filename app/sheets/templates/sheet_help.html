@@ -1,0 +1,72 @@
+
+{# see: sheet.html for include #}
+<div class="modal fade" id="sheet-help" tabindex="-1" role="dialog" aria-labelledby="sheetHelp" aria-hidden="true">
+  <div class="modal-dialog" style="width:900px">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button class="close" data-dismiss="modal">x</button>
+          <h3>Sheet help</h3>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-info">
+          <h4><button class="btn btn-primary">Save</button> <em>to give this sheet a name</em></h4>
+          <blockquote>
+            <p>
+              You do not have to save a sheet, but may use it as a <em>scratch</em> sheet for experimenting.
+            </p>
+          </blockquote>
+        </div>
+
+        <div class="alert alert-success">
+          <h4>Autorun <em>is used for trending sheets and other custom sheets (like a RSS feed)</em></h4>
+          <blockquote>
+            <p>
+              In other words, you are gathering counts or something over time.
+              <br /><br />
+              Also, trending sheets must follow a certain template (except for custom sheets) where:
+              <ul>
+                <li>the <b>first row</b> is for headers, so you can identify what count is in what column</li>
+                <li>
+                  the <b>second row</b> is for scraper/api functions:
+                  <br />
+                  typically, the <b>first column</b> of the second row is a url, username, or an video id
+                  (you may have multiple of these)
+                  <br />
+                </li>
+              </ul>
+              for example:
+              <br />
+              <pre>
+     A                       |    B        |     C     |     D     |         E         |
+ |---------------------------|-------------|-----------|-----------|-------------------|
+1|                           |             |  Tweets   | fb shares |youtube subscribers|
+2|http://some.com            |cleesmith2006|?tweets(a2)|?shares(a2)|?subscribers(B2)   |
+3|Tue March 10, 2015 00:19:57|             | 2,100,233 | 700,000   | 1,999,888,777,332 |
+4|Wed March 11, 2015 00:19:57|             | 2,100,234 | 700,001   | 1,999,888,777,333 |
+. . .
+              </pre>
+            </p>
+          </blockquote>
+        </div>
+<!--
+        <div class="alert alert-warning">
+          <h4>Link to a Google Spreadsheet</h4>
+          <blockquote>
+            <p>
+              <b>Coming soon!</b>
+              <br />
+              This will be used to link to a Google Spreadsheet and echo/mirror this sheet for collaboration/sharing.
+              <br />
+              In the meantime, you may copy/paste from a cellipede into a google spreadsheet to collaborate or share.
+            </p>
+          </blockquote>
+        </div>
+ -->
+        <div class="alert alert-warning">
+          <h4>updated: <em>is the last time this sheet was changed</em></h4>
+        </div>
+
+      </div><!-- modal-body -->
+    </div><!-- modal-content -->
+  </div><!-- modal-dialog -->
+</div><!-- modal -->

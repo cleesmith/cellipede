@@ -1,0 +1,6 @@
+clear
+cd testing
+nohup python -m SimpleHTTPServer 8888 &
+cd ..
+nohup gunicorn -b 0.0.0.0:80 run:flask_app &
+nohup python manage.py jobs &

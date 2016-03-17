@@ -1,0 +1,11 @@
+*.pyc
+coverage
+venv
+.DS_Store
+__cls.txt
+tm
+up
+ips
+__cls*
+pmr
+blog_index.html

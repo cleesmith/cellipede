@@ -1,0 +1,4 @@
+clear
+# for dev/test, as waitress doesn't reload changed code:
+python manage.py runserver
+#python manage.py waitress_please

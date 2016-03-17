@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+  <div class="jumbotron">
+    <h2>Cellipede</h2>
+    <p>
+      ... is a <b>python flask app</b> that uses javascript for spreadsheets instead of google's spreadsheets.
+      <br />
+      It is smaller and faster than a similar app called Pipulate, plus it's coded using best practices.
+      <br />
+      While most of the functions, scrapers, and APIs are related to SEO tasks, cellipede can be used
+      for other things.
+      <br />
+      Included is an example that fills a sheet with a daily listing of 'ruby on rails'
+      job postings from oDesk's RSS feed.
+    </p>
+    <br />
+    <p>
+      <a class="btn btn-success btn-sm" href="https://github.com/cleesmith/cellipede_on_heroku" target="_blank" role="button">See how to host it for FREE on Heroku</a>
+    </p>
+    <p>
+      <a class="btn btn-primary btn-sm" href="https://github.com/cleesmith/cellipede" target="_blank" role="button">See how to host it on your pc or other hardware</a>
+    </p>
+    <p>
+      <a class="btn btn-danger btn-lg" href="https://www.youtube.com/user/cleesmith2006/videos" target="_blank" role="button">Learn more on YouTube</a>
+    </p>
+  </div>
+  <div class="well">
+    <h3>Features</h3>
+    <ul>
+      <li>add your own or use the provided Scrapers and API's for social metrics:
+        <ul>
+          <li>Generic scrapers: title, description, ga</li>
+          <li>YouTube: subscribers, total views, video title, views, thumbs up, thumbs down</li>
+          <li>Twitter: tweet total, following, followers, tweets for any url</li>
+          <li>Google +1's</li>
+          <li>Facebook: shares, likes</li>
+        </ul>
+      </li>
+      <li>
+        learn to program in python using cellipede as a starter app, which is a great example of <b>best practices</b> in action,
+        but these are highly recommended:
+        <ul>
+          <li><a target="_blank" href="https://www.youtube.com/channel/UCfzlCWGWYyIQ0aLC5w48gBQ">sentdex - self-taught python programmer</a></li>
+          <li><a target="_blank" href="http://pythonprogramming.net/dashboard/">more sentdex</a></li>
+          <li><a target="_blank" href="https://www.youtube.com/watch?v=WfpFUmV1d0w&list=PLLjmbh6XPGK4ISY747FUHXEl9lBxre4mM">Michael Herman's flask tutorial</a></li>
+          <li><a target="_blank" href="http://blog.miguelgrinberg.com/">Miguel Grinberg</a></li>
+        </ul>
+      </li>
+      <li>customize it to suit your needs</li>
+      <li>easily collaborate/share with other people via google's spreadsheets in several ways:
+        <ol>
+          <li>
+            in a cellipede sheet do <b>ctrl+a</b> to select all, <b>ctrl+c</b> to copy,
+            then in a google spreadsheet do <b>ctrl+v</b> to paste
+          </li>
+          <li>
+            to import a whole cellipede sheet into a google spreadsheet:
+            <br />
+            <b>=IMPORTHTML("http://???/sheet_as_table?id=?","table",1)</b>
+            <br />
+            replace <b>???</b> with the url of your cellipede server and the <b>id=?</b> with any cellipede sheet number
+          </li>
+          <li>
+            to <em>perform</em> a cellipede function in a google spreadsheet cell:
+            <br />
+            <b>=IMPORTHTML("http://cellipede.herokuapp.com/sheet_function?afunction=tweets&url=http://www.amazon.com/","table",1)</b>
+            <br />
+            replace <b>cellipede.herokuapp.com</b> with the url of your cellipede server,
+            then replace the <b>afunction=?</b> and <b>url=???</b> with the desired function/url
+          </li>
+        </ol>
+      </li>
+    </ul>
+  </div>
+  <div class="well">
+    <p>
+      Please feel free to try the demos and to submit questions/comments/rants as an issue on either of the github repositories.
+    </p>
+  </div>
+</div>
+
+{% endblock %}
