@@ -18,16 +18,13 @@ it follows well known **best practices** for python and flask apps.
 * Includes a job scheduler to run tasks periodically for trending counts and anything over time.
 It may also be used for custom jobs, such as the included non-seo example RSS feed parser.
 It reads **ruby on rails** job postings from oDesk's RSS feed and fills in a sheet every day.
-* There is no login or password, but it's easy to add if you want your cellipede to be multi-user
-* You don't have to save a sheet just to try the demo, so go ahead kick the tires and play around, but you can save sheets if you want to
-* There is no __exclusive alpha/beta tester program__, just give it a try
-* It runs great on a cheap $5 per month server in the cloud like at DigitalOcean
+* There is no login or password, but it's easy to add if you want your cellipede to be multi-tenant/user.
+* It runs great on a cheap $5 per month server in the cloud like at DigitalOcean.
 * It runs great on Heroku, for free, well, if you stay below the 10,000 rows maximum for the free database,
 but that's a lot of sheets ... and each sheet has no row/column limit.
-* It runs great on a Mac, Ubuntu, or Debian ... probably others too
-* It runs great on a Raspberry Pi
-* There is a lot of potential for learning and growth with cellipede, so let your imagination run wild,
-but please let everyone know if you create something cool.
+* It runs great on a Mac, Ubuntu, or Debian, and probably others too.
+* It runs great on a Raspberry Pi.
+* There is a lot of potential for learning and growth with cellipede.
 
 ***
 
