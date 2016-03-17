@@ -16,7 +16,7 @@ called Handsontable.
   * It may also be used for custom jobs, such as the included non-seo example RSS feed parser.
   * It reads **ruby on rails** job postings from oDesk's RSS feed and fills in a sheet every day.
 * There is no login or password, but it's easy to add if you want your cellipede to
-be multi-tenant/user.
+be multi-tenant/user as the **plumbing code** is already in place.
 * It runs great on a cheap $5 per month server in the cloud like at DigitalOcean.
 * It runs great on Heroku, for free, well, if you stay below the 10,000 rows maximum for the
 free database,
