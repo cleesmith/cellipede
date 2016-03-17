@@ -5,13 +5,14 @@ called Handsontable.
   * Handsontable is similar to other spreadsheet software in terms of UI/UX, and it offers the usual excel-like formulas.
 * The sheets created are stored in a small SQLite/peewee database for later retrieval.
 * Social media metrics and user functions are also provided.
-* An intelligent generic scraper is provided, so if **lxml** is installed it will use that,
-but if it isn't it will use **beautifulsoup**.
-This makes using cellipede on Windows much easier and without compiler issues.
-* No google spreadsheets api (gdata) is required, so it's must faster and way more reliable.
-Of course, you can copy/paste into google spreadsheets if you need to collaborate/share.
-Even better, use cellipede as a service to grab the data you want while in a google spreadsheet.
-If you are learning to program, this is a great example of software to learn from as
+* An intelligent generic scraper is provided
+  * if **lxml** is installed, it will use that
+  * if **lxml** is NOT installed, it will use **beautifulsoup**
+  * this makes using cellipede on Windows much easier and without build issues
+* It does not rely on Google's Spreadsheets API, so it's must faster and way more reliable.
+  * Of course, you can copy/paste into google spreadsheets if you need to collaborate/share.
+  * Even better, use cellipede as a service to grab the data you want while in a google spreadsheet.
+* If you are learning to program, this is a great example of software to learn from as
 it follows well known **best practices** for Python and Flask apps.
 * Includes a job scheduler to run tasks periodically for trending counts and anything over time.
   * It may also be used for custom jobs, such as the included non-seo example RSS feed parser.
