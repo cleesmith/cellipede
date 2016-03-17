@@ -16,8 +16,8 @@ Even better, use cellipede as a service to grab the data you want while in a goo
 If you're learning to program, this is a much better example of software to learn from as
 it follows well known **best practices** for python and flask apps.
 * Includes a job scheduler to run tasks periodically for trending counts and anything over time.
-It may also be used for custom jobs, such as the included non-seo example RSS feed parser.
-It reads **ruby on rails** job postings from oDesk's RSS feed and fills in a sheet every day.
+  * It may also be used for custom jobs, such as the included non-seo example RSS feed parser.
+  * It reads **ruby on rails** job postings from oDesk's RSS feed and fills in a sheet every day.
 * There is no login or password, but it's easy to add if you want your cellipede to be multi-tenant/user.
 * It runs great on a cheap $5 per month server in the cloud like at DigitalOcean.
 * It runs great on Heroku, for free, well, if you stay below the 10,000 rows maximum for the free database,
