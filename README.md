@@ -13,8 +13,8 @@ This makes using cellipede on Windows much easier and without compiler issues.
 * No google spreadsheets api (gdata) is required, so it's must faster and way more reliable.
 Of course, you can copy/paste into google spreadsheets if you need to collaborate/share.
 Even better, use cellipede as a service to grab the data you want while in a google spreadsheet.
-If you're learning to program, this is a much better example of software to learn from as
-it follows well known **best practices** for python and flask apps.
+If you are learning to program, this is a great example of software to learn from as
+it follows well known **best practices** for Python and Flask apps.
 * Includes a job scheduler to run tasks periodically for trending counts and anything over time.
   * It may also be used for custom jobs, such as the included non-seo example RSS feed parser.
   * It reads **ruby on rails** job postings from oDesk's RSS feed and fills in a sheet every day.
