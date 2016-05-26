@@ -6,7 +6,31 @@
   * Handsontable is similar to other spreadsheet software in terms of UI/UX, and it offers the usual excel-like formulas.
 * The sheets created are stored in a small SQLite/peewee database for later retrieval.
 * Social media metrics and other functions are provided:
-  * see ```app/sheets/server_sides.py``` for details
+  * see ```app/sheets/server_sides.py``` for details:
+    * URL based functions:
+      * title - grabs head title tag
+      * description - grabs head meta description tag
+      * ga - grabs Google's analytics (UA) value
+      * links - grabs all ```<a href=``` tags
+    * SERP
+      * serps - the search rank/position for the given "query" via a Google search
+    * YouTube:
+      * subscribers
+      * totalviews
+      * views
+      * videotitle
+      * thumbsup
+      * thumbsdown
+    * Twitter
+      * tweettotal
+      * following
+      * followers
+      * tweets (any URL) - deprecated by Twitter in 2015
+    * Google
+      * plusses
+    * Facebook
+      * shares
+      * likes
   * you may add new functions to ```server_sides.py```
 * A generic scraper is provided that uses:
   * **lxml** if it's installed
@@ -32,33 +56,7 @@ it follows well known **best practices** for Python and Flask apps.
   * **flask** - how web apps work
   * **peewee** - how SQL databases work
   * **OS** - run it on various operating systems (OS) to explore and learn
-  * **SEO** - the basics: scraping web pages and calling APIs
-    * see ```app/sheets/server_sides.py``` for details:
-      * URL based functions:
-        * title - grabs head title tag
-        * description - grabs head meta description tag
-        * ga - grabs Google's analytics (UA) value
-        * links - grabs all ```<a href=``` tags
-      * SERP
-        * serps - the search rank/position for the given "query" via a Google search
-      * YouTube:
-        * subscribers
-        * totalviews
-        * views
-        * videotitle
-        * thumbsup
-        * thumbsdown
-      * Twitter
-        * tweettotal
-        * following
-        * followers
-        * tweets (any URL) - deprecated by Twitter in 2015
-      * Google
-        * plusses
-      * Facebook
-        * shares
-        * likes
-    * you may add new functions
+  * **SEO** - some simple web page scraping and API calling functions are provided
 
 ***
 
