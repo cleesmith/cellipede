@@ -26,11 +26,11 @@ free database, but that's a lot of sheets and each sheet has no row/column limit
 * If you are learning to program, this is a great example of software to learn from as
 it follows well known **best practices** for Python and Flask apps.
 * This app is great place to start learning about:
-  * python - a good beginner's programming language
-  * flask - how web apps work
-  * peewee - how SQL databases work
-  * OS - run it on various operating systems (OS) to explore and learn
-  * SEO - the basics: scraping web pages and calling APIs
+  * **python** - a good beginner's programming language
+  * **flask** - how web apps work
+  * **peewee** - how SQL databases work
+  * **OS** - run it on various operating systems (OS) to explore and learn
+  * **SEO** - the basics: scraping web pages and calling APIs
     * see ```app/sheets/server_sides.py``` for details and you may add new functions
 
 ***
