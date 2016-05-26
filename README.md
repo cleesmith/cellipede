@@ -33,7 +33,32 @@ it follows well known **best practices** for Python and Flask apps.
   * **peewee** - how SQL databases work
   * **OS** - run it on various operating systems (OS) to explore and learn
   * **SEO** - the basics: scraping web pages and calling APIs
-    * see ```app/sheets/server_sides.py``` for details and you may add new functions
+    * see ```app/sheets/server_sides.py``` for details:
+      * URL based functions:
+        * title - head title tag
+        * description - head meta description tag
+        * ga - Google's analytics (UA) value
+        * links - all ```<a href=``` tags
+      * SERP
+        * serps - the search rank/position for the given "query" via Google
+      * YouTube:
+        * subscribers
+        * totalviews
+        * views
+        * videotitle
+        * thumbsup
+        * thumbsdown
+      * Twitter
+        * tweettotal
+        * following
+        * followers
+        * tweets (any URL) - deprecated by Twitter in 2015
+      * Google
+        * plusses
+      * Facebook
+        * shares
+        * likes
+    * you may add new functions
 
 ***
 
