@@ -6,21 +6,21 @@
   * Handsontable is similar to other spreadsheet software in terms of UI/UX, and it offers the usual excel-like formulas.
 * The sheets created are stored in a small SQLite/peewee database for later retrieval.
 * Social media metrics and user functions are also provided.
-* An intelligent generic scraper is provided
-  * if **lxml** is installed, it will use that
-  * if **lxml** is NOT installed, it will use **beautifulsoup**
-  * this makes using cellipede on Windows much easier and without build issues
+* A generic scraper is provided that uses:
+  * **lxml** if it's installed
+  * **beautifulsoup** if **lxml** is NOT installed
+  * this allows it to run on Windows much easier and without dependency build issues
 * It does not rely on Google's Spreadsheets API, so it's must faster and way more reliable.
   * Of course, you can copy/paste into google spreadsheets if you need to collaborate/share.
   * Even better, use cellipede as a service to grab the data you want while in a google spreadsheet.
-* Includes a job scheduler to run tasks periodically for trending counts and anything over time.
+* It includes a job scheduler to run tasks periodically for trending counts and anything over time.
   * It may also be used for custom jobs, such as the included non-seo example RSS feed parser.
   * It reads **ruby on rails** job postings from oDesk's RSS feed and fills in a sheet every day.
 * There is no login or password, but it's easy to add if you want your cellipede to
-be multi-tenant/user as the **plumbing code** is already in place.
+be multi-tenant/user as the **code** to do so is provided.
 * It runs great on a cheap $5 per month server in the cloud like at DigitalOcean.
 * It runs great on Heroku, for free, well, if you stay below the 10,000 rows maximum for the
-free database, but that's a lot of sheets ... and each sheet has no row/column limit.
+free database, but that's a lot of sheets and each sheet has no row/column limit.
 * It runs great on a Mac, Ubuntu, or Debian, and probably others too.
 * It runs great on a Raspberry Pi.
 * If you are learning to program, this is a great example of software to learn from as
