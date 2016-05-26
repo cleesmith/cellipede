@@ -85,8 +85,7 @@ on your server.  That's if you wish to run cellipede as a service, which may be 
 3. pip install -r windows_requirements.txt
 ```
 * The above does not include **lxml** which is difficult to install on Windows, so cellipede will use **BeautifulSoup** instead.
-* If python 3+ is installed cellipede will not work.  A __todo__ is to make cellipede compatible with both
-python 2.7+ and 3+.
+* If python 3+ is installed cellipede will not work, but a __todo__ is to be compatible with both python 2.7+ and 3+.
 
 ***
 ***
