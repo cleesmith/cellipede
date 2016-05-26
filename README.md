@@ -1,5 +1,7 @@
 # Cellipede
 
+### A python/flask web app for SEO chores.
+
 * One of the most important new features is **native spreadsheets** via a jquery plugin
 called Handsontable.
   * Handsontable is similar to other spreadsheet software in terms of UI/UX, and it offers the usual excel-like formulas.
@@ -19,8 +21,7 @@ called Handsontable.
 be multi-tenant/user as the **plumbing code** is already in place.
 * It runs great on a cheap $5 per month server in the cloud like at DigitalOcean.
 * It runs great on Heroku, for free, well, if you stay below the 10,000 rows maximum for the
-free database,
-but that's a lot of sheets ... and each sheet has no row/column limit.
+free database, but that's a lot of sheets ... and each sheet has no row/column limit.
 * It runs great on a Mac, Ubuntu, or Debian, and probably others too.
 * It runs great on a Raspberry Pi.
 * If you are learning to program, this is a great example of software to learn from as
@@ -75,7 +76,7 @@ on your server.  That's if you wish to run cellipede as a service, which may be 
 
 **or**
 
-> Actually, if you have python and pip installed it's the same steps as a Mac, except for step 3 which should be:
+> Actually, if you have python and pip installed then it's the same steps as a Mac, except for step 3 which should be:
 ```
 3. pip install -r windows_requirements.txt
 ```
