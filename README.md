@@ -25,7 +25,12 @@ free database, but that's a lot of sheets ... and each sheet has no row/column l
 * It runs great on a Raspberry Pi.
 * If you are learning to program, this is a great example of software to learn from as
 it follows well known **best practices** for Python and Flask apps.
-* There is a lot of potential for learning and growth with cellipede.
+* This app is great place to start learning about:
+  * python - a good beginner's programming language
+  * flask - how web apps work
+  * peewee - SQL database
+  * SEO - the basics
+  * OS - run it on various operating systems (OS) to explore and learn
 
 ***
 
