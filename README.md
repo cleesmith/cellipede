@@ -2,8 +2,7 @@
 
 ### A python/flask web app for SEO chores.
 
-* One of the most important new features is **native spreadsheets** via a jquery plugin
-called Handsontable.
+* Includes **native spreadsheets** via a jquery plugin called Handsontable.
   * Handsontable is similar to other spreadsheet software in terms of UI/UX, and it offers the usual excel-like formulas.
 * The sheets created are stored in a small SQLite/peewee database for later retrieval.
 * Social media metrics and user functions are also provided.
