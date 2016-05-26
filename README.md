@@ -7,7 +7,7 @@
 * The sheets created are stored in a small SQLite/peewee database for later retrieval.
 * Social media metrics and other functions are provided:
   * see ```app/sheets/server_sides.py``` for details
-  * you may add new functions to server_sides
+  * you may add new functions to ```server_sides.py```
 * A generic scraper is provided that uses:
   * **lxml** if it's installed
   * **beautifulsoup** if **lxml** is NOT installed
