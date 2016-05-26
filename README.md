@@ -35,10 +35,10 @@ it follows well known **best practices** for Python and Flask apps.
   * **SEO** - the basics: scraping web pages and calling APIs
     * see ```app/sheets/server_sides.py``` for details:
       * URL based functions:
-        * title - head title tag
-        * description - head meta description tag
-        * ga - Google's analytics (UA) value
-        * links - all ```<a href=``` tags
+        * title - grabs head title tag
+        * description - grabs head meta description tag
+        * ga - grabs Google's analytics (UA) value
+        * links - grabs all ```<a href=``` tags
       * SERP
         * serps - the search rank/position for the given "query" via Google
       * YouTube:
