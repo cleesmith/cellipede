@@ -28,9 +28,9 @@ it follows well known **best practices** for Python and Flask apps.
 * This app is great place to start learning about:
   * python - a good beginner's programming language
   * flask - how web apps work
-  * peewee - SQL database
-  * SEO - the basics
+  * peewee - how SQL databases work
   * OS - run it on various operating systems (OS) to explore and learn
+  * SEO - the basics: crawling, scraping, and calling APIs
 
 ***
 
