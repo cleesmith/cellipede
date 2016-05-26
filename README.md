@@ -40,7 +40,7 @@ it follows well known **best practices** for Python and Flask apps.
         * ga - grabs Google's analytics (UA) value
         * links - grabs all ```<a href=``` tags
       * SERP
-        * serps - the search rank/position for the given "query" via Google
+        * serps - the search rank/position for the given "query" via a Google search
       * YouTube:
         * subscribers
         * totalviews
