@@ -30,7 +30,8 @@ it follows well known **best practices** for Python and Flask apps.
   * flask - how web apps work
   * peewee - how SQL databases work
   * OS - run it on various operating systems (OS) to explore and learn
-  * SEO - the basics: crawling, scraping, and calling APIs
+  * SEO - the basics: scraping web pages and calling APIs
+    * see ```app/sheets/server_sides.py``` for details and you may add new functions
 
 ***
 
